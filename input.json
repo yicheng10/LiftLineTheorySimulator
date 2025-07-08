@@ -1,0 +1,50 @@
+{
+    "wing" : {
+        "planform" : {
+          "type" : "file",
+          "type_options" : [["elliptic: (requires aspect_ratio)"],
+                            ["tapered: (requires aspect_ratio and taper_ratio)"],
+                            ["file: (requires filename)"]],
+          "aspect_ratio" : 8,
+          "taper_ratio" : 0.5,
+          "filename" : "planform.txt"
+        },
+        "airfoil_lift_slope" : 6.283185307179590,
+        "nodes_per_semispan" : 100,
+        "washout" : {
+          "distribution" : "linear",
+          "distribution_options" : [["none: no twist"],
+                                    ["linear: linear twist distribution"],
+                                    ["optimum: optimum twist distribution"]],
+          "amount[deg]" : "optimum",
+          "amount_options" : [["value: real number in degrees"],
+                                 ["optimum: requires CL_design"]],
+          "CL_design" : 0.5,
+          "B3" : -0.33333333333
+        },
+        "aileron" : {
+            "begin[z/b]" : 0.22,
+            "end[z/b]" : 0.45,
+            "begin[cf/c]" : 0.18,
+            "end[cf/c]" : 0.18,
+            "hinge_efficiency" : 0.85
+        }
+    },
+    "condition" : {
+        "alpha_root[deg]" : "CL",
+        "alpha_options" : [["value: real number in degrees"],
+                           ["CL: requires CL"]],
+        "CL" : 0.8,
+        "aileron_deflection[deg]" : 2,
+        "pbar" : "steady",
+        "pbar_options" : [["value: real number nondimensional rolling rate"],
+                          ["steady: computes steady-state rolling rate"]]
+    },
+    "view" : {
+        "planform" : true,
+        "washout_distribution" : true,
+        "aileron_distribution" : true,
+        "CL_hat_distributions" : true,
+        "CL_tilde_distributions" : true
+    }
+}
